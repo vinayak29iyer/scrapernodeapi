@@ -1,0 +1,1 @@
+export const scrapperTestUrl = process.env.SCRAPPER_TEST_URL

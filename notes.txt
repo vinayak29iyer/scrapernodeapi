@@ -1,0 +1,4 @@
+REFERENCE -
+# npm install --save-dev @types/cheerio - was added as a devDependency to fix cheerio deprecation warning
+# api\services\awsSdk.js - we have added if(ENV === "staging" || ENV === "production") condition since in staging and prodEnvironment the creds are taken from ASSUME-ROLE in AWS
+#
