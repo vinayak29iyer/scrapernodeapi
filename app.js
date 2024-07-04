@@ -24,10 +24,10 @@ const GET_RATE_LIMITER = rateLimit({
   windowMs: 60 * 1000, // 1 minute
   max: Number(APP_RATE_LIMIT_GET), // Limit each IP to 2 requests per minute
   keyGenerator: function (req) {
-    return req.ip; // Use IP address as the key
+    return req.headers['x-forwarded-for'] ? forwarded.split(',')[0] : req.socket.remoteAddress; // Use IP address as the key
   },
   handler: function (req, res, next) {
-    logger.error(`Rate limit exceeded for IP: ${req.ip}`);
+    logger.error(`Rate limit exceeded for IP: ${req.headers['x-forwarded-for'] ? forwarded.split(',')[0] : req.socket.remoteAddress}`);
 
     // 3. Send a custom response
     return res.status(429).json({
@@ -48,10 +48,10 @@ const POST_RATE_LIMITER = rateLimit({
   windowMs: 60 * 1000, // 1 minute
   max: Number(APP_RATE_LIMIT_POST), // Limit each IP to 5 requests per minute
   keyGenerator: function (req) {
-    return req.ip; // Use IP address as the key
+    return req.headers['x-forwarded-for'] ? forwarded.split(',')[0] : req.socket.remoteAddress // Use IP address as the key
   },
   handler: function (req, res, next) {
-    logger.error(`Rate limit exceeded for IP: ${req.ip}`);
+    logger.error(`Rate limit exceeded for IP: ${req.headers['x-forwarded-for'] ? forwarded.split(',')[0] : req.socket.remoteAddress}`);
 
     // 3. Send a custom response
     return res.status(429).json({
