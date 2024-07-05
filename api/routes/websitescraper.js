@@ -11,6 +11,7 @@ const WebsiteScraperRouter = express.Router()
     `/fetch-metadata`, protectedScraperRoute, async (req, res, next) => {
       try{
        const { url = '' } = req.body || {}
+       console.log('BODY URL >> ',req.body.url)
        const { data, cache} = await findScrapperData({url})
        return res.status(200).json({
         statusCode: 200,
