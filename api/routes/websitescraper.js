@@ -1,6 +1,6 @@
 import express from 'express'
 import { findScrapperData } from '../controller/index'
-import { protectedScraperRoute } from '../validation/scraper'
+import { protectedScraperRoute, validateScraperReq } from '../validation/scraper'
 import { logger } from '../services'
 
 
@@ -8,13 +8,9 @@ const WebsiteScraperRouter = express.Router()
 
   //Fetch metadata
   WebsiteScraperRouter.post(
-    `/fetch-metadata`, protectedScraperRoute, async (req, res, next) => {
+    `/fetch-metadata`, protectedScraperRoute, validateScraperReq, async (req, res, next) => {
       try{
        const { url = '' } = req.body || {}
-       /**
-        * @Note the url received from req.body converts & to &amp on server, so we are replacing &amp; to &
-        */
-      //  const { data, cache} = await findScrapperData({url: url.replace(/&amp;/g, "&").trim()})
       const { data, cache} = await findScrapperData({url})
        return res.status(200).json({
         statusCode: 200,

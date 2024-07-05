@@ -47,7 +47,6 @@
     "moment-timezone": "^0.5.45",
     "mongoose": "^8.3.4",
     "nodemailer": "^6.9.13",
-    "puppeteer": "^22.12.1",
     "rate-limit-mongo": "^2.3.2",
     "whatsapp": "^0.0.5-Alpha",
     "whatsapp-business-api": "^0.0.4",

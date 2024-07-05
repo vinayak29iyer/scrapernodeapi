@@ -1,10 +1,9 @@
 import moment from 'moment-timezone'
 import { genJwt } from '../services'
 
-const {LOGIN_USERNAME, LOGIN_PASSWORD, REACT_APP_LOGIN_EXPIRY_MINUTES} = process.env
+const {LOGIN_USERNAME, LOGIN_PASSWORD, JWT_EXPIRY_MINS} = process.env
 
 export const verLoginAndGenToken = async(bodyData = {}) => {
-    console.log('Login Called!')
     const { password, username } = bodyData
     
     if((LOGIN_USERNAME !== username) || (LOGIN_PASSWORD !== password)){
@@ -24,7 +23,7 @@ export const verLoginAndGenToken = async(bodyData = {}) => {
         data: {
             redirectUrl: '/dashboard',
             token: genJwt({ timeStamp: moment().format('x') }), //generate random timeStamp token
-            tokenExpTime: moment().add(parseInt(REACT_APP_LOGIN_EXPIRY_MINUTES), 'minutes').format('YYYY-MM-DD HH:mm:ss')
+            tokenExpTime: moment().add(parseInt(JWT_EXPIRY_MINS), 'minutes').format('YYYY-MM-DD HH:mm:ss')
         }
     }
 }
