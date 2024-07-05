@@ -11,8 +11,11 @@ const WebsiteScraperRouter = express.Router()
     `/fetch-metadata`, protectedScraperRoute, async (req, res, next) => {
       try{
        const { url = '' } = req.body || {}
-       console.log('BODY URL >> ',req.body.url)
-       const { data, cache} = await findScrapperData({url})
+       /**
+        * @Note the url received from req.body converts & to &amp on server, so we are replacing &amp to &
+        */
+       const { data, cache} = await findScrapperData({url: url.replace(/&amp/g, "&")
+       })
        return res.status(200).json({
         statusCode: 200,
         status: true,

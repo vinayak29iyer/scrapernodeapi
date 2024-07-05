@@ -13,7 +13,6 @@ export const findScrapperData = async(params) => {
             }
         }
         const { data: htmlData = '', status = false, message = ''} = await getWebsiteMetadata(url)
-        console.log('htmlData>> ',htmlData)
         if(!htmlData){
             throw new Error(message.includes('ENOTFOUND') ? 'Invalid Url!': message)
         }
