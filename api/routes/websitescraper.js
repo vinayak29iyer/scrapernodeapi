@@ -1,5 +1,5 @@
 import express from 'express'
-import { findScrapperData } from '../controller/index'
+import { findScraperData } from '../controller/index'
 import { protectedScraperRoute, validateScraperReq } from '../validation/scraper'
 import { logger } from '../services'
 
@@ -11,7 +11,7 @@ const WebsiteScraperRouter = express.Router()
     `/fetch-metadata`, protectedScraperRoute, validateScraperReq, async (req, res, next) => {
       try{
        const { url = '' } = req.body || {}
-      const { data, cache} = await findScrapperData({url})
+      const { data, cache} = await findScraperData({url})
        return res.status(200).json({
         statusCode: 200,
         status: true,

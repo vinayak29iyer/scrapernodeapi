@@ -2,7 +2,7 @@
  *  Description - Initialise all routes with base path and global error handler
  */
 import debug from 'debug'
-import WebsiteScrapperRouter from './websitescraper'
+import WebsiteScraperRouter from './websitescraper'
 import AuthRouter from './auth'
 import { ResponseBody } from '../lib/index' 
 
@@ -14,8 +14,8 @@ const log = debug('app')
 const { BASE_ROUTE_API, LOGIN_USERNAME,LOGIN_PASSWORD } = process.env
 let Routes = [
   {
-    path: `${BASE_ROUTE_API}/websitescrapper`,
-    router: WebsiteScrapperRouter
+    path: `${BASE_ROUTE_API}/websitescraper`,
+    router: WebsiteScraperRouter
   },{
     path: `${BASE_ROUTE_API}/auth`,
     router: AuthRouter

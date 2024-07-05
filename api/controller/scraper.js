@@ -1,11 +1,11 @@
 import { getWebsiteMetadata, verifyJwt } from '../services/index'
-import { saveScrapperData, findScrapperDataById} from '../queries/scraper'
+import { saveScraperData, findScraperDataById} from '../queries/scraper'
 
 
 
-export const findScrapperData = async(params) => {
+export const findScraperData = async(params) => {
         const { url = '' } = params
-        const findCacheData = await findScrapperDataById(url.trim())
+        const findCacheData = await findScraperDataById(url.trim())
         if(findCacheData){
             return {
                 data: findCacheData.metaData,
@@ -17,7 +17,7 @@ export const findScrapperData = async(params) => {
             throw new Error(message.includes('ENOTFOUND') ? 'Invalid Url!': message)
         }
         //save scrappedData to mongoCache
-        await saveScrapperData({
+        await saveScraperData({
             websiteName: url.trim(),
             metaData: htmlData
         })

@@ -1,18 +1,18 @@
-import { WebsiteScrapperModel } from '../models/index'
+import { WebsiteScraperModel } from '../models/index'
 
-export const findScrapperDataById = async(websiteName) => {
-    return WebsiteScrapperModel.findOne({
+export const findScraperDataById = async(websiteName) => {
+    return WebsiteScraperModel.findOne({
         websiteName
     })
 }
-export const saveScrapperData = async(params) => {
+export const saveScraperData = async(params) => {
     try {
-       return WebsiteScrapperModel.create(params)
+       return WebsiteScraperModel.create(params)
     } catch(error) {
         throw new Error(error.message || 'Error in Saving data')
     }
 }
-export const findAllScrapperByUrl = async(url) => {
+export const findAllScraperByUrl = async(url) => {
     //.sort({_id: -1}) , even if we have repeatative data, this will always get the latest record
-    return WebsiteScrapperModel.findOne({ websiteName: url }).sort({_id: -1})
+    return WebsiteScraperModel.findOne({ websiteName: url }).sort({_id: -1})
 }

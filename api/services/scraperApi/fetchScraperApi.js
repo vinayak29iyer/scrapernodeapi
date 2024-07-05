@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {travHtmlAndGetData} from './fetchScrapperApiHelper'
+import {travHtmlAndGetData} from './fetchScraperApiHelper'
 import { logger } from '..'
 
 export const getWebsiteMetadata = async(url) => {

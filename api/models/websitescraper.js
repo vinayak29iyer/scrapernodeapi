@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const { Schema } = mongoose
 
-const websiteScrapperSchema = new Schema({
+const websiteScraperSchema = new Schema({
     websiteName: { type: String, required: true, index: true },
     metaData: { type: Object, required: true },
     createdAt: {
@@ -13,12 +13,12 @@ const websiteScrapperSchema = new Schema({
   timestamps: true
 })
 
-websiteScrapperSchema.pre('findOneAndUpdate', function (next) {
+websiteScraperSchema.pre('findOneAndUpdate', function (next) {
     var currentDate = new Date();
     next()
     
 });
 
-const WebsiteScrapperModel = mongoose.model('websiteScrapper', websiteScrapperSchema)
+const WebsiteScraperModel = mongoose.model('websiteScraper', websiteScraperSchema)
 
-export { WebsiteScrapperModel }
+export { WebsiteScraperModel }

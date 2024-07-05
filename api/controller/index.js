@@ -1,2 +1,2 @@
-export * from './scrapper'
+export * from './scraper'
 export * from './auth'

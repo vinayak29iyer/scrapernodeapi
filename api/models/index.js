@@ -1,1 +1,1 @@
-export * from './websitescrapper'
+export * from './websitescraper'

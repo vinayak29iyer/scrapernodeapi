@@ -1,4 +1,4 @@
 export * from './awsSdk'
-export * from './scraperApi/fetchScrapperApi'
+export * from './scraperApi/fetchScraperApi'
 export * from './winstonLog'
 export * from './jwt'
