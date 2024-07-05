@@ -12,9 +12,9 @@ const WebsiteScraperRouter = express.Router()
       try{
        const { url = '' } = req.body || {}
        /**
-        * @Note the url received from req.body converts & to &amp on server, so we are replacing &amp to &
+        * @Note the url received from req.body converts & to &amp on server, so we are replacing &amp; to &
         */
-       const { data, cache} = await findScrapperData({url: url.replace(/&amp/g, "&")
+       const { data, cache} = await findScrapperData({url: url.replace(/&amp;/g, "&")
        })
        return res.status(200).json({
         statusCode: 200,
