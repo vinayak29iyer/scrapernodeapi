@@ -3,7 +3,6 @@ import puppeteer from 'puppeteer'
 import {travHtmlAndGetData} from './fetchScrapperApiHelper'
 
 export const getWebsiteMetadata = async(url) => {
-  console.log('url>>>>>> ',url)
     try {
       const htmlData = async() => {
         
