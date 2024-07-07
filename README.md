@@ -13,7 +13,7 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
 ## Features
 
 - **Extract Metadata:** Scrape and retrieve metadata from any given URL.
-- **Efficient Web Scraping:** Utilize Cheerio and Axios for fast and efficient web scraping.
+- **Efficient Web Scraping with cache:** Utilize Cheerio and Axios for fast and efficient web scraping. Used mongoDb as a cache, so if the same url is called again within 5 mins, then the response is returned from DB & not he API.
 - **Error Handling:** Comprehensive error handling to manage invalid URLs and failed requests.
 - **JSON Response:** Clean and structured JSON responses.
 - **RESTful API:** Follow RESTful principles for ease of use and integration.
@@ -21,6 +21,7 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
 ## Table of Contents
 
 - [Installation](#installation)
+- [High Level Architecture](#Architecutre)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Contact](#Contact)
@@ -44,6 +45,40 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
     ```bash
     npm start
     ```
+
+## High Level Architecture
+Here’s a high-level overview of the architecture:
++-------------------+          +-------------------+          +----------------------+
+|    User          | -------> |   CloudFront     | -------> |      S3 Bucket      |
++-------------------+          +-------------------+          +----------------------+
+                             (Content Delivery Network)             (Static React App)
+                                                                      |   |
+                                                                     \|/
+                                                                 +---------------+
+                                                                 | API Gateway   |
+                                                                 +---------------+
+                                                                      |   |
+                                                                     \|/
+                                                             +-------------------+
+                                                             |     EC2 Instance   |
+                                                             |   Node.js Express  |
+                                                             +-------------------+
+                                                                      |   |
+                                                                     \|/
+                                                             +-------------------+
+                                                             | MongoDB Atlas     |
+                                                             +-------------------+
+
+ **Diagram Explanation:**
+1. User: The user interacts with your web application through a web browser.
+2. CloudFront: This content delivery network caches your static React app across the globe, ensuring fast and efficient content delivery to users worldwide.
+3. S3 Bucket: Your React app (built using npm run build or a similar command) is stored as static files (HTML, CSS, JavaScript) in an S3 bucket.
+4. API Gateway: When your React app needs to perform scraping or access data, it sends requests to the API Gateway. This gateway acts as a front door, handling authentication, request routing, and other API management tasks.
+5. EC2 Instance: The Node.js Express API runs on an EC2 instance. This is where your scraping logic resides and where data is processed and retrieved from the database & Scrapper API(AXIOS).
+6. MongoDB Atlas: Your scraped metadata is stored in MongoDB Atlas, a fully managed cloud database service. This provides scalability, flexibility, and ease of management for your data. I have added a ttl of 5mins to avoid high data retention.
+
+This high-level diagram provides a clear visual representation of the major components and their interactions within your AWS architecture.
+
 ## Usage
 Send a POST request to the `${BASE_ROUTE_API}/websitescraper/fetch-metadata` endpoint with the target URL as a query parameter.
 * BASE_ROUTE_API- this env value will the prefix of routing - example if `BASE_ROUTE_API=/api`, the fetch-metadata endpoint would be `${YOURDOMAIN/LOCALHOST:PORTNUMBER}/api/websitescraper/fetch-metadata`
