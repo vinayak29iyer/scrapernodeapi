@@ -48,26 +48,9 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
 
 ## High Level Architecture
 Here’s a high-level overview of the architecture:
-+-------------------+          +-------------------+          +----------------------+
-|    User          | -------> |   CloudFront     | -------> |      S3 Bucket      |
-+-------------------+          +-------------------+          +----------------------+
-                             (Content Delivery Network)             (Static React App)
-                                                                      |   |
-                                                                     \|/
-                                                                 +---------------+
-                                                                 | API Gateway   |
-                                                                 +---------------+
-                                                                      |   |
-                                                                     \|/
-                                                             +-------------------+
-                                                             |     EC2 Instance   |
-                                                             |   Node.js Express  |
-                                                             +-------------------+
-                                                                      |   |
-                                                                     \|/
-                                                             +-------------------+
-                                                             | MongoDB Atlas     |
-                                                             +-------------------+
+
+User --> CloudFront (Content Delivery Network) --> S3 Bucket (Static React App) --> API Gateway (API Endpoints) --> EC2 Instance (Node.js Express) --> MongoDB Atlas
+
 
  **Diagram Explanation:**
 1. User: The user interacts with your web application through a web browser.
