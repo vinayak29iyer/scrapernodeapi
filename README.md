@@ -21,7 +21,7 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
 ## Table of Contents
 
 - [Installation](#installation)
-- [High Level Architecture](#Architecutre)
+- [High Level Architecture](#High-Level-Architecture)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Contact](#Contact)
@@ -46,7 +46,7 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
     npm start
     ```
 
-## High Level Architecture
+## High-Level-Architecture
 Here’s a high-level overview of the architecture:
 
 User --> CloudFront (Content Delivery Network) --> S3 Bucket (Static React App) --> API Gateway (API Endpoints) --> EC2 Instance (Node.js Express) --> MongoDB Atlas
