@@ -4,6 +4,7 @@
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
 ![Cheerio](https://img.shields.io/badge/Cheerio-FFD700?style=for-the-badge&logo=cheerio&logoColor=black)
 ![Axios](https://img.shields.io/badge/Axios-671DDF?style=for-the-badge&logo=axios&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
 ## Overview
 
@@ -22,10 +23,6 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [Example](#example)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Installation
 
@@ -46,3 +43,8 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
     ```bash
     npm start
     ```
+## Usage
+Send a POST request to the `${BASE_ROUTE_API}/websitescraper/fetch-metadata` endpoint with the target URL as a query parameter.
+* BASE_ROUTE_API- this env value will the prefix of routing - example if `BASE_ROUTE_API=/api`, the fetch-metadata endpoint would be `${YOURDOMAIN/LOCALHOST:PORTNUMBER}/api/websitescraper/fetch-metadata`
+*Once setup is done, authLogin needs to be called where you will recieve a authToken which you will need to pass in the above `fetch-metadata` Api to authorize it.
+*A public PostMan collection which is a reference to all APIs in the project. url - `https://www.postman.com/supply-technologist-17867282/workspace/scraper-public-apis/overview`
