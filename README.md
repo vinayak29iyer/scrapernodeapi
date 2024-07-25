@@ -24,7 +24,6 @@ The Node.js Metadata Scraper API is a robust and efficient API designed to scrap
 - [High Level Architecture](#High-Level-Architecture)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [Contact](#Contact)
 
 ## Installation
 
@@ -68,5 +67,3 @@ Send a POST request to the `${BASE_ROUTE_API}/websitescraper/fetch-metadata` end
 *Once setup is done, authLogin needs to be called where you will recieve a authToken which you will need to pass in the above `fetch-metadata` Api to authorize it.
 *A public PostMan collection which is a reference to all APIs in the project. url - `https://www.postman.com/supply-technologist-17867282/workspace/scraper-public-apis/overview`
 
-## Contact
-- **LinkedIn:** [Your LinkedIn](https://www.linkedin.com/in/vinayak-iyer-65610b17)
