@@ -4,6 +4,7 @@
 import debug from 'debug'
 import WebsiteScraperRouter from './websitescraper'
 import AuthRouter from './auth'
+import UsersRouter from './userReg'
 import { ResponseBody } from '../lib/index' 
 
 import { logger } from '../services'
@@ -19,6 +20,9 @@ let Routes = [
   },{
     path: `${BASE_ROUTE_API}/auth`,
     router: AuthRouter
+  },{
+    path: `${BASE_ROUTE_API}/users`,
+    router: UsersRouter
   }
 ]
 

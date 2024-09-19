@@ -1,6 +1,6 @@
 import express from 'express'
 import { findScraperData } from '../controller/index'
-import { protectedScraperRoute, validateScraperReq } from '../validation/scraper'
+import { protectedAuthRoute, validateScraperReq } from '../validation/scraper'
 import { logger } from '../services'
 
 
@@ -8,7 +8,7 @@ const WebsiteScraperRouter = express.Router()
 
   //Fetch metadata
   WebsiteScraperRouter.post(
-    `/fetch-metadata`, protectedScraperRoute, validateScraperReq, async (req, res, next) => {
+    `/fetch-metadata`, protectedAuthRoute, validateScraperReq, async (req, res, next) => {
       try{
        const { url = '' } = req.body || {}
       const { data, cache} = await findScraperData({url})

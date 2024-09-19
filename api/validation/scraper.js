@@ -1,7 +1,7 @@
 import Joi from 'joi'
 import { verifyJwt } from '../services'
 import { logger } from '../services'
-export const protectedScraperRoute = async(req, res, next) => {
+export const protectedAuthRoute = async(req, res, next) => {
     const token =  req.header('Authorization') ? req.header('Authorization').replace('Bearer ', ''): ''
     if (!token) {
         return res.status(401).json({

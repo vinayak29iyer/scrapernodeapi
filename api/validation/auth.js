@@ -4,7 +4,7 @@ import { logger } from '../services'
 
 export const validateAuth = async(req, res, next) => {
     const LoginSchema = Joi.object({
-        username: Joi.string().min(3).max(10).required().messages({
+        username: Joi.string().min(3).max(30).required().messages({
           'any.required': `username is a required field and cannot be empty`,
           'string.base': `"username should be a type of 'text'`,
           'string.empty': `username cannot be an empty field`,
